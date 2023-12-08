@@ -1,0 +1,20 @@
+{
+    "type": "mysql",
+    "host": "host.docker.internal",
+    "port": 3306,
+    "username": "root",
+    "password": "s3cr3t",
+    "database": "primary_store",
+    "synchronize": true,
+    "logging": true,
+    "entities": [
+      "src/models/*.ts"
+    ],
+    "migrations": [
+      "src/migration/**/*.ts"
+    ],
+    "subscribers": [
+      "src/subscriber/**/*.ts"
+    ]
+  }
+  
