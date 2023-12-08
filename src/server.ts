@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 // Conexión a la base de datos utilizando TypeORM
 createConnection({
   type: 'mysql',
-  host: 'host.docker.internal',
+  host: '3.135.182.134',
   port: parseInt('3306' || '3306', 10),
   username: 'root',
   password: 's3cr3t',
