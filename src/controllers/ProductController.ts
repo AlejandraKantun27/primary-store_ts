@@ -22,7 +22,21 @@ class ProductController {
   }
 
   async createProduct(req: Request, res: Response) {
-    const { nombre, descripcion, precio, categoria, fabricante, cantidadExistencia, unidadMedida, usuarioCreacion, usuarioActualizacion, activo } = req.body;
+    const {
+      nombre,
+      descripcion,
+      precio,
+      categoria,
+      fabricante,
+      cantidadExistencia,
+      unidadMedida,
+      usuarioCreacion,
+      usuarioActualizacion,
+      activo,
+      numeroSerie,
+      marca,
+      imagen,
+    } = req.body;
     const productRepository = getRepository(Product);
 
     const newProduct = productRepository.create({
@@ -33,11 +47,14 @@ class ProductController {
       fabricante,
       cantidadExistencia,
       unidadMedida,
-      fechaCreacion: new Date().toISOString(), // Guardar la fecha de hoy
+      fechaCreacion: new Date(),
       usuarioCreacion,
-      fechaActualizacion: new Date().toISOString(), // Guardar la fecha de hoy  
+      fechaActualizacion: new Date(),
       usuarioActualizacion,
-      activo
+      activo,
+      numeroSerie,
+      marca,
+      imagen,
     });
 
     await productRepository.save(newProduct);
@@ -46,7 +63,19 @@ class ProductController {
 
   async updateProduct(req: Request, res: Response) {
     const productId = parseInt(req.params.id, 10);
-    const { nombre, descripcion, precio, categoria, fabricante, cantidadExistencia, unidadMedida, activo } = req.body;
+    const {
+      nombre,
+      descripcion,
+      precio,
+      categoria,
+      fabricante,
+      cantidadExistencia,
+      unidadMedida,
+      activo,
+      numeroSerie,
+      marca,
+      imagen,
+    } = req.body;
 
     const productRepository = getRepository(Product);
     const product = await productRepository.findOne({ where: { id: productId } });
@@ -56,33 +85,20 @@ class ProductController {
     }
 
     // Actualizar campos según la solicitud
-    if (nombre) {
-      product.nombre = nombre;
-    }
-    if (descripcion) {
-      product.descripcion = descripcion;
-    }
-    if (precio) {
-      product.precio = precio;
-    }
-    if (categoria) {
-      product.categoria = categoria;
-    }
-    if (fabricante) {
-      product.fabricante = fabricante;
-    }
-    if (cantidadExistencia) {
-      product.cantidadExistencia = cantidadExistencia;
-    }
-    if (unidadMedida) {
-      product.unidadMedida = unidadMedida;
-    }
-    if (activo !== undefined) {
-      product.activo = activo;
-    }
+    product.nombre = nombre || product.nombre;
+    product.descripcion = descripcion || product.descripcion;
+    product.precio = precio || product.precio;
+    product.categoria = categoria || product.categoria;
+    product.fabricante = fabricante || product.fabricante;
+    product.cantidadExistencia = cantidadExistencia || product.cantidadExistencia;
+    product.unidadMedida = unidadMedida || product.unidadMedida;
+    product.activo = activo !== undefined ? activo : product.activo;
+    product.numeroSerie = numeroSerie || product.numeroSerie;
+    product.marca = marca || product.marca;
+    product.imagen = imagen || product.imagen;
 
     // Actualizar la fecha de actualización
-    product.usuarioActualizacion = new Date().toISOString();
+    product.fechaActualizacion = new Date();
 
     // Guardar los cambios en la base de datos
     await productRepository.save(product);

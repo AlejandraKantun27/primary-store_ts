@@ -41,6 +41,15 @@ export class Product {
   @Column({ default: true })
   activo!: boolean;
 
+  @Column()
+  numeroSerie!: string;
+
+  @Column()
+  marca!: string;
+
+  @Column('longblob')
+  imagen!: Buffer;
+
   // Agregar dos campos adicionales según tus necesidades
 
   // Puedes agregar relaciones con otras entidades aquí si es necesario
