@@ -33,7 +33,7 @@ class ProductController {
       usuarioCreacion,
       usuarioActualizacion,
       activo,
-      imagen,
+      image,
     } = req.body;
     const productRepository = getRepository(Product);
 
@@ -50,7 +50,7 @@ class ProductController {
       fechaActualizacion: new Date(),
       usuarioActualizacion,
       activo,
-      imagen
+      image
     });
 
     await productRepository.save(newProduct);
@@ -68,7 +68,7 @@ class ProductController {
       cantidadExistencia,
       unidadMedida,
       activo,
-      imagen,
+      image,
     } = req.body;
 
     const productRepository = getRepository(Product);
@@ -87,7 +87,7 @@ class ProductController {
     product.cantidadExistencia = cantidadExistencia || product.cantidadExistencia;
     product.unidadMedida = unidadMedida || product.unidadMedida;
     product.activo = activo !== undefined ? activo : product.activo;    
-    product.imagen = imagen || product.imagen;
+    product.image = image || product.image;
 
     // Actualizar la fecha de actualización
     product.fechaActualizacion = new Date();

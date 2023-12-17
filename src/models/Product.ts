@@ -42,7 +42,7 @@ export class Product {
   activo!: boolean;
 
   @Column('longblob')
-  imagen!: Buffer;
+  image!: Buffer;
 
   // Agregar dos campos adicionales según tus necesidades
 
