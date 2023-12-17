@@ -125,7 +125,7 @@ class ProductController {
 
       res.json(products);
     } catch (error) {
-      res.status(500).json({ message: 'Error al buscar productos por categoría', error: error.message });
+      res.status(500).json({ message: 'Error al buscar productos por categoría', error: error });
     }
   }
 
