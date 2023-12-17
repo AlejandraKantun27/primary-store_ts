@@ -41,6 +41,9 @@ export class Product {
   @Column({ default: true })
   activo!: boolean;
 
+  @Column('longblob')
+  image!: Buffer;
+
   // Agregar dos campos adicionales según tus necesidades
 
   // Puedes agregar relaciones con otras entidades aquí si es necesario

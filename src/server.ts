@@ -16,6 +16,11 @@ import { Purchase } from './models/Purchase';
 import { PurchaseDetail } from './models/PurchaseDetail';
 
 const app = express();
+
+
+app.use(bodyParser.json({ limit: '50mb' })); // Ajusta el límite según tus necesidades
+
+
 const PORT = process.env.PORT || 3000;
 
 // Middleware
