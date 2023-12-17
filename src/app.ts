@@ -6,6 +6,7 @@ import cors from 'cors';
 
 import userRoutes from './routes/userRoutes';
 import authRoutes from './routes/authRoutes';
+import shoppingCartsRoutes from './routes/shoppingCartsRoutes';
 import productRoutes from './routes/productRoutes';
 import promotionalProductRoutes from './routes/promotionalProductRoutes';
 import purchaseRoutes from './routes/purchaseRoutes';
@@ -15,6 +16,7 @@ import { Product } from './models/Product';
 import { PromotionalProduct } from './models/PromotionalProduct';
 import { Purchase } from './models/Purchase';
 import { PurchaseDetail } from './models/PurchaseDetail';
+import { ShoppingCart } from './models/ShoppingCart';
 
 const app = express();
 
@@ -64,6 +66,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api', productRoutes);
 app.use('/api', promotionalProductRoutes);
 app.use('/api', purchaseRoutes);
+app.use('/api', shoppingCartsRoutes);
 
 // Manejo de rutas no encontradas
 app.use((req: Request, res: Response) => {
