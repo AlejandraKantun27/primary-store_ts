@@ -17,9 +17,9 @@ import { PurchaseDetail } from './models/PurchaseDetail';
 
 const app = express();
 
-// Aumentar el límite a 1000mb o según sea necesario
-app.use(bodyParser.json({ limit: '1000mb' }));
-app.use(bodyParser.urlencoded({ limit: '1000mb', extended: true }));
+
+app.use(bodyParser.json({ limit: '50mb' })); // Ajusta el límite según tus necesidades
+
 
 const PORT = process.env.PORT || 3000;
 
