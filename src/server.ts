@@ -2,7 +2,6 @@ import express, { Request, Response, NextFunction } from 'express';
 import { config } from 'dotenv';
 import { createConnection } from 'typeorm';
 import * as bodyParser from 'body-parser';
-import cors from 'cors';
 
 import userRoutes from './routes/userRoutes';
 import authRoutes from './routes/authRoutes';
