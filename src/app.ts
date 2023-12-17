@@ -2,7 +2,6 @@ import express, { Request, Response, NextFunction } from 'express';
 import { config } from 'dotenv';
 import { createConnection } from 'typeorm';
 import * as bodyParser from 'body-parser';
-import cors from 'cors';
 
 import userRoutes from './routes/userRoutes';
 import authRoutes from './routes/authRoutes';
@@ -24,7 +23,6 @@ app.use(bodyParser.json({ limit: '50mb' })); // Ajusta el límite según tus nec
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(cors());
 app.use(bodyParser.json());
 
 createConnection({

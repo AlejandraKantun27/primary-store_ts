@@ -24,7 +24,6 @@ app.use(bodyParser.json({ limit: '50mb' })); // Ajusta el límite según tus nec
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(cors());
 app.use(bodyParser.json());
 
 // Conexión a la base de datos utilizando TypeORM
