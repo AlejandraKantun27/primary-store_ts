@@ -86,7 +86,7 @@ class ProductController {
     product.fabricante = fabricante || product.fabricante;
     product.cantidadExistencia = cantidadExistencia || product.cantidadExistencia;
     product.unidadMedida = unidadMedida || product.unidadMedida;
-    product.activo = activo !== undefined ? activo : product.activo;    
+    product.activo = activo !== undefined ? activo : product.activo;
     product.image = image || product.image;
 
     // Actualizar la fecha de actualización
@@ -110,6 +110,27 @@ class ProductController {
     await productRepository.remove(product);
     res.json({ message: 'Producto eliminado correctamente' });
   }
+
+  // ... (resto del controlador)
+
+  async getProductsByCategory(req: Request, res: Response) {
+    const category = req.params.category;
+    const productRepository = getRepository(Product);
+
+    try {
+      const products = await productRepository.find({
+        where: { categoria: category },
+        take: 5, // Obtener como máximo 5 resultados
+      });
+
+      res.json(products);
+    } catch (error) {
+      res.status(500).json({ message: 'Error al buscar productos por categoría', error: error.message });
+    }
+  }
+
+  // ... (resto del controlador)
+
 }
 
 export default new ProductController();
