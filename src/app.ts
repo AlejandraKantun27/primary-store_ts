@@ -28,7 +28,7 @@ const PORT = process.env.PORT || 3000;
 const corsOptions = {
   origin: '*', // Acepta conexiones desde cualquier origen
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true,
+  credentials: false,
   optionsSuccessStatus: 204,
 };
 
