@@ -15,6 +15,7 @@ import { Product } from './models/Product';
 import { PromotionalProduct } from './models/PromotionalProduct';
 import { Purchase } from './models/Purchase';
 import { PurchaseDetail } from './models/PurchaseDetail';
+import { ShoppingCart } from './models/ShoppingCart';
 
 const app = express();
 
@@ -50,6 +51,7 @@ createConnection({
     PromotionalProduct,
     Purchase,
     PurchaseDetail,
+    ShoppingCart
   ],
   synchronize: true,
 }).then(() => {

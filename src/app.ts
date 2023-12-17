@@ -50,7 +50,8 @@ createConnection({
     Product,
     PromotionalProduct,
     Purchase,
-    PurchaseDetail
+    PurchaseDetail,
+    ShoppingCart
   ],
   synchronize: true,
 }).then(() => {
