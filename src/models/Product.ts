@@ -41,12 +41,6 @@ export class Product {
   @Column({ default: true })
   activo!: boolean;
 
-  @Column()
-  numeroSerie!: string;
-
-  @Column()
-  marca!: string;
-
   @Column('longblob')
   imagen!: Buffer;
 
