@@ -1,6 +1,5 @@
 import express from 'express';
 import AuthController from '../controllers/AuthController';
-import authMiddleware from '../middleware/authMiddleware';
 
 const router = express.Router();
 
@@ -8,6 +7,6 @@ const router = express.Router();
 router.post('/login', AuthController.login);
 router.post('/register', AuthController.register);
 // Ruta para obtener el ID del usuario mediante el token
-router.get('/getUserId', authMiddleware, AuthController.getUserId);
+router.get('/getUserId', AuthController.getUserId);
 
 export default router;
