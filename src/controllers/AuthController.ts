@@ -50,6 +50,29 @@ class AuthController {
     res.json({ message: 'Registro exitoso' });
   }
 
+  async getUserId(req: Request, res: Response) {
+    // Obtener el token del encabezado de la solicitud
+    const token = req.headers.authorization?.split(' ')[1];
+
+    if (!token) {
+      return res.status(401).json({ message: 'Token no proporcionado' });
+    }
+
+    try {
+      // Decodificar el token
+      const decodedToken: any = jwt.verify(token, 'secreto');
+
+      // Obtener el ID del usuario desde el token
+      const userId = decodedToken.userId;
+
+      res.json({ userId });
+    } catch (error) {
+      res.status(401).json({ message: 'Token inválido', error: error.message });
+    }
+  }
+
+
+
   // Puedes agregar más métodos según las necesidades de autenticación y registro
 }
 
