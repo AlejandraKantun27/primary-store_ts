@@ -2,6 +2,7 @@ import express, { Request, Response, NextFunction } from 'express';
 import { config } from 'dotenv';
 import { createConnection } from 'typeorm';
 import * as bodyParser from 'body-parser';
+import cors from 'cors';
 
 import userRoutes from './routes/userRoutes';
 import authRoutes from './routes/authRoutes';
@@ -22,7 +23,16 @@ app.use(bodyParser.json({ limit: '50mb' })); // Ajusta el límite según tus nec
 
 const PORT = process.env.PORT || 3000;
 
+// Configuración del middleware CORS
+const corsOptions = {
+  origin: '*', // Acepta conexiones desde cualquier origen
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+  optionsSuccessStatus: 204,
+};
+
 // Middleware
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 // Conexión a la base de datos utilizando TypeORM
