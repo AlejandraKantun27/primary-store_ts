@@ -86,6 +86,6 @@ class ShoppingCartController {
 }
 
   // Otros métodos según las necesidades del carrito de compras
-}
+
 
 export default new ShoppingCartController();
